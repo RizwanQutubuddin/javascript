@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Interview Video 10</h1>
+    <input type="button" onclick="getDetails()" name="" id="" value="Get Details">
+    <script>
+        "use strict";
+
+        class BankAccount {
+            name='Rizwan ali';
+            #pin = "123456";
+            getName() { 
+                return this.name;
+            }
+
+            #getPin() { 
+                return this.#pin;
+            }
+            getDetail() { 
+                return {
+                    name: this.getName(),
+                    pin: this.#getPin(),
+                }
+            }
+
+        }
+
+        function getDetails() { 
+            const details = new BankAccount();
+            console.warn(details.getDetail());
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+    <h1>Users Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th rowspan="3">name</th>
+                <th rowspan="3">username</th>
+                <th rowspan="3">email</th>
+                <th colspan="6" >address</th>
+                <th rowspan="3">phone</th>
+                <th rowspan="3">website</th>
+                <th colspan="3">
+                    company
+                </th>
+                
+            </tr>
+            <tr>
+                <th rowspan="2">street</th> 
+                <th rowspan="2">suite</th> 
+                <th rowspan="2">city</th> 
+                <th rowspan="2">zipcode</th> 
+                <th colspan="2">geo</th> 
+                <th  rowspan="2">name</th>
+                <th  rowspan="2">catchPhrase</th>
+                <th  rowspan="2">bs</th>
+            </tr>
+            <tr>
+                <th>lat</th>
+                <th>lng</th>
+            </tr>
+        </thead>
+        <tbody id="myData">
+
+        </tbody>
+        <tbody>
+
+        </tbody>
+    </table>
+    <h1>Post Data</h1>
+    <form>
+        <table id="myForm">
+            <tr>
+                <td>userId</td>
+                <td><input type="text" placeholder="userId" id="userId"/></td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td><input type="text" placeholder="title" id="title"/></td>
+            </tr>
+            <tr>
+                <td>body</td>
+                <td><input type="text" placeholder="body" id="body"/></td>
+            </tr> 
+            <tr>
+                <td colspan="2"><input type="submit" id="submit" value="submit"/></td>
+            </tr>           
+        </table>
+    </form>
+    <script>
+        // let data = fetch("./content/readme.txt");
+        //"mera system th ye, apka hi h use kr raha hu mai bus."
+
+        // let data = fetch('https://jsonplaceholder.typicode.com/posts');
+        let data = fetch('./data-table/user.json');
+        data.then((response) => {
+            return response.json();
+        }).then((data) => {
+            let tableRow='';
+            let tableAddress='';
+            for (const key in data) {
+                tableRow+=`
+                <tr>
+                    <td>${data[key].name}</td>
+                    <td>${data[key].username}</td>
+                    <td>${data[key].email}</td>
+                    <td>${data[key].address.street}</td>
+
+                    <td>${data[key].address.suite}</td>
+                    <td>${data[key].address.city}</td>
+                    <td>${data[key].address.zipcode}</td>
+                    <td>${data[key].address.geo.lat}</td>
+                    <td>${data[key].address.geo.lng}</td>
+
+                    <td>${data[key].phone}</td>
+                    <td>${data[key].website}</td>
+                    <td>${data[key].company.name}</td>
+                    <td>${data[key].company.catchPhrase}</td>
+                    <td>${data[key].company.bs}</td>
+                </tr>`
+            }
+            document.getElementById('myData').innerHTML=tableRow;
+        }).catch((error) => { 
+            console.log(error)
+        })
+
+        document.getElementById('submit').addEventListener('click',function(e){
+            e.preventDefault();
+            // method one start
+            let userId=document.getElementById('userId').value;
+            let title=document.getElementById('title').value;
+            let body=document.getElementById('body').value;
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+                'title':title,
+                'userId':userId,
+                'body':body
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+            // method one end
+
+            // method 2nd start
+            /*
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body:new FormData(document.getElementById('myForm')),
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded',
+            },
+            })
+            .then((response) => response.json())
+            .then((json) => console.log(json));*/
+        })
+                
+
+    </script>
+</body>
+</html>

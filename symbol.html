@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbols</title>
+</head>
+<body>
+    <h1>Symbols</h1>
+    <script>
+        let id1=Symbol("hello");
+        let id2=Symbol("hello");
+        let age=Symbol();
+        document.write(id1.toString());// it will print => Symbol(hello)
+        document.write(id1.description);// it will print => hello
+
+        console.log(id1,id2);
+        let user={
+            name:'rizwan',
+            class:'MCA',
+            [age]:10
+        }
+        console.log(user)
+    </script>
+</body>
+</html>

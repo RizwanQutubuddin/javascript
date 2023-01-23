@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterators</title>
+</head>
+<body>
+    <h1>Iterators</h1>
+    <script>
+        // for array
+        let numbers=[100,200,300,400,500];
+        let iter=numbers[Symbol.iterator]();
+        let result=iter.next();
+        while(!result.done){
+            console.log(result);
+            result=iter.next();
+        }
+
+        // for string
+        let str='Yahoo baba';
+        let iter2=str[Symbol.iterator]();
+        let result2=iter2.next();
+        while(!result2.done){
+            console.log(result2);
+            result2=iter2.next();
+        }
+
+        for(let i of str){
+            console.log(i);
+        }
+
+        //create own iterator funciton
+        let num=[1,2,3];
+        let n=numIteraotr(num);
+
+        function numIteraotr(arr){
+            var nextNum=0;
+            return {
+                next(){
+                    if(nextNum<arr.length){
+                        return{
+                            value:arr[nextNum++],
+                            done:false
+                        }
+                    }else{
+                        return{
+                            done:true
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        console.log(n.next());
+        console.log(n.next());
+        console.log(n.next());
+        console.log(n.next());
+    </script>
+</body>
+</html>

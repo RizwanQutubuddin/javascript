@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acync</title>
+</head>
+<body>
+    <h1>Acync</h1>
+
+    <script>
+        async function test() { 
+            //==> method 1 start
+            try {
+                let response = await fetch('./data-table/user.json');
+                let users = await response.json();
+                return users;
+            } catch (error) {
+                return error;
+            }
+
+            //==> method 2 start
+            // return (await fetch('./data-table/user.json')).json();
+            //==> method 2 end
+
+            
+
+        }
+
+        //==>this is for method 1
+        test().then((res) => {
+            console.log(res);
+        })
+
+        //==>this is for method 2 
+        // test().then((res) => {
+        //     console.log(res);
+        // }).catch((error)=>{
+        // console.log(error);
+        // })
+
+    </script>
+</body>
+</html>

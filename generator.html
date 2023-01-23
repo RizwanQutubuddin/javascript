@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+<body>
+    <h1>Generator</h1>
+
+    <script>
+        function *test(){
+            yield "First";
+            yield "Second";
+            yield "Third";
+            yield ['java','python','c#']; //show array
+            yield* ['java','python','c#']; //show saperate value
+
+            yield 1;
+            yield 2;
+            yield 3;
+            yield 4;
+        }
+
+        let t=test();
+        console.log(t.next());
+        console.log(t.next());
+        console.log(t.next());
+        console.log(t.return('end now')); //after return nothing will show
+        console.log(t.next());
+        console.log(t.next());
+        console.log(t.next());
+        console.log(t.next());
+        console.log([...t]); // spread operator use to print rest value
+        console.log(t.next());
+
+        // set yeild value
+        function *test2(){
+            let result=yield;
+            console.log(`result : ${result}`);
+            
+        }
+
+        let t2=test2();
+            t2.next();
+            t2.next(500)
+    </script>
+</body>
+</html>

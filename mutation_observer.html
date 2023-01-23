@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutation observer</title>
+</head>
+<body>
+    <h1>Mutation Observer</h1>
+    <div id="elem" class="parent-div">
+        <div contenteditable class="div1">Div 1</div>
+        <div contenteditable class="div2">Div 2</div>
+        <div contenteditable class="div3">Div 3</div>
+    </div>
+    <button onclick="deleteDiv()">delete div</button>
+
+    <script>
+        let observer = new MutationObserver((data) => { 
+            console.warn(data);
+        });
+
+        observer.observe(elem, {
+            childList:true
+        })
+
+        function deleteDiv(){
+            document.getElementById('elem').children[0].remove();
+        }
+    </script>
+</body>
+</html>

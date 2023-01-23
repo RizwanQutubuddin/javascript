@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body>
+    <script >
+        class student { 
+            constructor(name,age) {
+                this.sname=name;
+                this.age=age;
+                console.log('constructor function');
+            }
+
+            hello() { 
+                console.log(`hello ${this.sname}, your age: ${this.age}`);
+            }
+
+            static staticMethod() { 
+                console.log('this is staticMethod');
+            }
+        }
+
+        // let a = new student('Rizwan',30);
+        // a.hello();
+
+        // student.staticMethod();
+
+        class Employee { 
+            constructor(name) { 
+                this.employeeName=name;
+                console.log('Employee constructor function');
+            }
+            info() { 
+                console.log(`employee Name : ${this.employeeName}`);
+
+            }
+        }
+
+        class Manager extends Employee{ 
+            
+            info() { 
+                super.info();
+                console.log(`manager Name : ${this.employeeName}`);
+
+            }
+        }
+
+        let a = new Manager('Rizwan ali');
+        a.info();
+    </script>
+</body>
+</html>

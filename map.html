@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<body>
+    <h1>Map</h1>
+
+    <script>
+       let obj = {
+            name: 'Rizwan',
+            10: 'this is a number key',
+            true:'this is bool value'
+        }
+        obj.city = 'Noida'; //add new key value in obj.
+
+        let data = new Map([
+            ['name', 'Rizwan'],
+            [10, 'this is a number key'],
+            [true,'this is bool value']
+        ]);
+        data.set('city', 'Delhi'); // add new key value in map.
+
+        console.warn('obj=', obj); //print object
+        //console.warn('obj=', obj.10); //cant print value of 10. shows an error
+
+        console.warn('data=', data); //print map object
+        console.warn('data.get("name")=', data.get('name')); // get specific keys value
+        console.warn('data.keys()=', data.keys()); // get all keys name
+        console.warn('data.values()=', data.values()); // get all values data
+        console.warn('data.size=', data.size); // size of map
+        console.warn('data.delete=', data.delete(true)); // delete key and value
+        console.warn('data.has=', data.has(true)); // check key has or not
+    </script>
+</body>
+</html>
